@@ -1,3 +1,10 @@
+import { createClient } from "contentful"
+import { fetchContent, fetchContentTypes } from "../fetch"
+import {
+  createPluginConfig,
+  formatPluginOptionsForCLI,
+} from "../plugin-options"
+
 const mockClient = {
   getLocales: jest.fn(() =>
     Promise.resolve({
@@ -54,13 +61,6 @@ jest.mock(`../plugin-options`, () => {
 
 // jest so test output is not filled with contentful plugin logs
 global.console = { log: jest.fn(), time: jest.fn(), timeEnd: jest.fn() }
-
-import { createClient } from "contentful"
-import { fetchContent, fetchContentTypes } from "../fetch"
-import {
-  formatPluginOptionsForCLI,
-  createPluginConfig,
-} from "../plugin-options"
 
 const proxyOption = {
   host: `localhost`,

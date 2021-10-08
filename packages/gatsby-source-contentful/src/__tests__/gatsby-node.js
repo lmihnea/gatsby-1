@@ -1,12 +1,4 @@
 // This is more an integration test than it is a unit test. We try to mock as little as we can
-
-jest.mock(`../fetch`)
-jest.mock(`gatsby-core-utils`, () => {
-  return {
-    createContentDigest: () => `contentDigest`,
-  }
-})
-
 import _ from "lodash"
 import {
   onPreBootstrap,
@@ -19,6 +11,13 @@ import { makeId } from "../normalize"
 import startersBlogFixture from "../__fixtures__/starter-blog-data"
 import richTextFixture from "../__fixtures__/rich-text-data"
 import restrictedContentTypeFixture from "../__fixtures__/restricted-content-type"
+
+jest.mock(`../fetch`)
+jest.mock(`gatsby-core-utils`, () => {
+  return {
+    createContentDigest: () => `contentDigest`,
+  }
+})
 
 const defaultPluginOptions = { spaceId: `testSpaceId` }
 
